@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel = "stylesheet" href = "style.css">
+    <script src = "main.js"></script>
+    <script src = "rainbow.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body class = "world">
+    <header>
+        <div id="logo" class="menuUp">
+            <a href ="index.html"><h1>Insert Soda Pun Here</h1></a>
+            <div id="navToggle"><a href="Menu.html">Menu</a></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="About.html">About</a></li>
+                <li>
+                    <a href="World.html">Soda Around the World <span class="toggle">Expand</span><span class="caret"></span></a>
+                    <nav>
+                        <ul>
+                            <li><a href="North America.html">North America</a></li>
+                            <li><a href="South America.html">South America</a></li>
+                            <li><a href="Africa.html">Africa</a></li>
+                            <li><a href="Europe.html">Europe</a></li>
+                            <li><a href="Asia.html">Asia</a></li>
+                            <li><a href="Australia.html">Australia</a></li>
+                        </ul>
+                    </nav>
+                </li>
+                <li><a href="how its made.html">How It's Made</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class = "world_ul">
+      <ul>
+        <li><a href="North America.html" class = "world_a">North America</a></li>
+        <li><a href="South America.html" class = "world_a">South America</a></li>
+        <li><a href="Africa.html" class = "world_a">Africa</a></li>
+        <li><a href="Europe.html" class = "world_a">Europe</a></li>
+        <li><a href="Asia.html" class = "world_a">Asia</a></li>
+        <li><a href="Australia.html" class = "world_a">Australia</a></li>
+      </ul>
+    </div>
+
+      <a href="index.html" class="action-button shadow animate blue">Click to Go Home</a>
+
+    <div class="notes">
+      <p> <span class="note-click"></span>
+      <p> <span class="note-hover"></span>
+      <p> <span class="note-mouse"></span>
+      <p> <span class="note-move"></span>
+    </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+
+      // click
+      $(".action-button").click(function() {
+        $(".note-click").text("Clicks:You clicked the button");
+      });
+
+      // hover
+      $(".action-button").hover(function() {
+          $(".note-hover").text("Hover: You are hovering over the button");
+        },
+        function() {
+          $(".note-hover").text("Hover: You are hovering off the button");
+        });
+
+      // Mousedown
+      $(".action-button").mousedown(function() {
+        $(".note-mouse").text("Mouse: The Mouse is clicked down on the button.");
+      });
+
+      // Mouseenter
+      $(".action-button").mouseenter(function() {
+        $(".note-mouse").text("Mouse: The Mouse is placed over on the button.");
+      });
+
+      // Mouseleave
+      $(".action-button").mouseleave(function() {
+        $(".note-mouse").text("Mouse: The Mouse is moved off the button.");
+      });
+
+
+      // Mousemove
+      var counter = 0;
+      $('.action-button').mousemove(function() {
+        counter++;
+        $(".note-move").text("Moved over button: " + counter);
+      });
+
+    });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel = "stylesheet" href = "style.css">
+    <script src = "main.js"></script>
+    <script src = "rainbow.js"></script>
+  </head>
+  <body class = "europe">
+    <header>
+        <div id="logo" class="menuUp">
+            <a href="index.html"><h1></h1></a>
+            <div id="navToggle"><a href="Menu.html">Menu</a></div>
+        </div>
+        <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="About.html">About</a></li>
+              <li>
+                  <a href="World.html">Soda Around the World <span class="toggle">Expand</span><span class="caret"></span></a>
+                  <nav>
+                      <ul>
+                          <li><a href="North America.html">North America</a></li>
+                          <li><a href="South America.html">South America</a></li>
+                          <li><a href="Africa.html">Africa</a></li>
+                          <li><a href="Europe.html">Soda Locator</a></li>
+                          <li><a href="Asia.html">Asia</a></li>
+                          <li><a href="Australia.html">Australia</a></li>
+                        </ul>
+                    </nav>
+                </li>
+                <li><a href="how its made.html">How It's Made</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 class = "Drop_Down">Soda Store Locator</h1>
+
+    <style>
+         /* Always set the map height explicitly to define the size of the div
+          * element that contains the map. */
+         #map {
+           height: 100%;
+         }
+         /* Optional: Makes the sample page fill the window. */
+         html, body {
+           height: 100%;
+           margin: 0;
+           padding: 0;
+         }
+       </style>
+       <script>
+         // This example requires the Places library. Include the libraries=places
+         // parameter when you first load the API. For example:
+         // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+         var map;
+         var infowindow;
+
+         function initMap() {
+           var rocketFizzDowntown = {lat: 39.748243, lng: -104.9980086};
+           var rocketFizzNorthfield = {lat: 39.783968, lng: -104.892098};
+           var rocketFizzHighlandsRanch = {lat: 39.542220, lng: -104.942702};
+           var rocketFizzParker = {lat: 39.518382, lng: -104.760474};
+           var rocketFizzCastleRock = {lat: 39.411196, lng: -104.873064};
+           var myHouse = {lat: 39.754872, lng: -104.895520};
+           var pyramidOfGiza = {lat: 29.9792, lng: 31.1342};
+           var easterIsland = {lat: 27.1127, lng: 109.3497};
+           var rockyMountainSodaCo = {lat: 39.777826, lng: -104.925472};
+
+           map = new google.maps.Map(document.getElementById('map'), {
+             center: dsst,
+             zoom: 15
+           });
+
+           infowindow = new google.maps.InfoWindow();
+           var service = new google.maps.places.PlacesService(map);
+           service.nearbySearch({
+             location: dsst,
+             radius: 1000,
+             type: ['grocery']
+           }, callback);
+         }
+
+         function callback(results, status) {
+           if (status === google.maps.places.PlacesServiceStatus.OK) {
+             for (var i = 0; i < results.length; i++) {
+               createMarker(results[i]);
+             }
+           }
+         }
+
+         function createMarker(place) {
+           var placeLoc = place.geometry.location;
+           var marker = new google.maps.Marker({
+             map: map,
+             position: place.geometry.location
+           });
+
+           google.maps.event.addListener(marker, 'click', function() {
+             infowindow.setContent(place.name);
+             infowindow.open(map, this);
+           });
+         }
+       </script>
+     </head>
+       <div id="map"></div>
+       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1kI84n7s5gNlLEmrnQX_ttU6d6tz3r5Y&libraries=places&callback=initMap" async defer></script>
+  </body>
